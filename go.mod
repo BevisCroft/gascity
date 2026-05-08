@@ -19,3 +19,5 @@ require (
 	golang.org/x/crypto v0.22.0 // indirect
 	golang.org/x/sys v0.19.0 // indirect
 )
+
+// personal fork of gastownhall/gascity — using this to learn go-ethereum internals
