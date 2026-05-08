@@ -25,7 +25,7 @@ var (
 
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
-		Level: slog.LevelInfo,
+		Level: slog.LevelDebug, // changed from LevelInfo to see more detail during local dev
 	}))
 	slog.SetDefault(logger)
 
@@ -69,5 +69,8 @@ func run(ctx context.Context, cfg *config.Config) error {
 
 	slog.Info("shutdown signal received")
 
+	// NOTE: context.Canceled on clean shutdown is expected; not really an
+	// error worth logging as one. Keeping the return for now to satisfy the
+	// error-check in main, but this should be revisited when run() grows.
 	return fmt.Errorf("context cancelled: %w", ctx.Err())
 }
