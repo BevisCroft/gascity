@@ -21,3 +21,4 @@ require (
 )
 
 // personal fork of gastownhall/gascity — using this to learn go-ethereum internals
+// TODO: experiment with go-ethereum v1.14.x once it stabilizes
