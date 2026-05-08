@@ -69,8 +69,10 @@ func run(ctx context.Context, cfg *config.Config) error {
 
 	slog.Info("shutdown signal received")
 
-	// NOTE: context.Canceled on clean shutdown is expected; not really an
-	// error worth logging as one. Keeping the return for now to satisfy the
-	// error-check in main, but this should be revisited when run() grows.
-	return fmt.Errorf("context cancelled: %w", ctx.Err())
+	// context.Canceled on clean shutdown is expected and not a real error.
+	// Return nil so main doesn't log it as an application error or exit(1).
+	if ctx.Err() == context.Canceled {
+		return nil
+	}
+	return fmt.Errorf("context error: %w", ctx.Err())
 }
