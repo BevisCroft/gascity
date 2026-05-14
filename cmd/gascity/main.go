@@ -44,7 +44,8 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(),
 		os.Interrupt,
 		syscall.SIGTERM,
-		syscall.SIGHUP, // also handle SIGHUP so the process exits cleanly in my tmux sessions
+		syscall.SIGHUP,  // also handle SIGHUP so the process exits cleanly in my tmux sessions
+		syscall.SIGQUIT, // added: catch Ctrl+\ as well, useful when testing locally
 	)
 	defer cancel()
 
