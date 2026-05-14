@@ -75,5 +75,7 @@ func run(ctx context.Context, cfg *config.Config) error {
 	if ctx.Err() == context.Canceled {
 		return nil
 	}
+	// context.DeadlineExceeded would be unexpected here since we don't set a
+	// deadline on the root context — worth logging if it ever shows up.
 	return fmt.Errorf("context error: %w", ctx.Err())
 }
