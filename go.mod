@@ -22,3 +22,4 @@ require (
 
 // personal fork of gastownhall/gascity — using this to learn go-ethereum internals
 // TODO: experiment with go-ethereum v1.14.x once it stabilizes
+// NOTE: tried v1.14.0 on 2024-05-10, broke trie package API — revisit after v1.14.3
